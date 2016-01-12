@@ -58,7 +58,10 @@ module.exports = function (grunt) {
                     }
 
                     var origSize = stats.size;
-                    var diffSize = origSize - data[0].contents.length;
+                    // TRY workaround
+                    // https://github.com/psergei/grunt-contrib-imagemin/commit/411c98daa2e7e18b72c74fb13112567dff347d48
+                    // var diffSize = origSize - data[0].contents.length;
+                    var diffSize = data.length ? (origSize - data[0].contents.length) : 0;
 
                     totalSaved += diffSize;
 
